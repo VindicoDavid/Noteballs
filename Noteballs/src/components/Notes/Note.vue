@@ -6,7 +6,7 @@
         {{ note.content }}
       </div>
       <div class="has-text-right hast-text-grey light mt-2">
-        <small>{{ characterLength }} characters</small>
+        <small>{{ characterLength }}</small>
         </div>
     </div>
 
@@ -20,7 +20,9 @@
     import { ref, computed } from 'vue'
 
     const characterLength = computed(() => {
-      return props.note.content.length
+        let length = props.note.content.length
+        let description = length>1? 'characters': 'character'
+      return `${length} ${description}`
     })
 
 
