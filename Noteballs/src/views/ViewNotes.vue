@@ -24,6 +24,7 @@
     :key="note.id"
     :note="note"
     class="card mb-4"
+    @deleteClicked="handleDeleteClicked"
     
     />
     
@@ -58,6 +59,21 @@ const addNote = () => {
   newNote.value = ''
   newNoteRef.value.focus()
 
+}
+
+const handleDeleteClicked = (id) => {
+  deleteNote(id)
+}
+const handleEditClicked = (id) => {
+  // Handle the edit logic here
+  console.log('edit note', id)
+}
+
+// delete note
+const deleteNote = (id) => {
+  console.log('delete note', id)
+  notes.value = notes.value.filter(note => note.id !== id)
+  
 }
 
 

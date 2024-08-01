@@ -11,8 +11,8 @@
     </div>
 
     <footer class="card-footer">
-      <a href="#" class="card-footer-item" @click="editNote(note)">Edit</a>
-      <a href="#" class="card-footer-item" @click="deleteNote(note.id)">Delete</a>
+      <a href="#" class="card-footer-item" @click.prevent="editNote">Edit</a>
+      <a href="#" class="card-footer-item" @click.prevent="handleDeleteClicked">Delete</a>
     </footer>
   </div>
   </template>
@@ -31,4 +31,18 @@
       type: Object,
       required: true
     })
+    const emit = defineEmits([
+        'deleteClicked',
+        'editClicked'
+    ]
+       
+    )
+
+    const editNote = () => {
+       emit('editClicked', props.note.id)
+    }
+
+    const handleDeleteClicked = () => {
+        emit('deleteClicked', props.note.id)
+    }
 </script>
