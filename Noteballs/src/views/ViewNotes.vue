@@ -19,7 +19,14 @@
         </div>
       </div>
     </div>
-
+    <Note
+    v-for="note in notes"
+    :key="note.id"
+    :note="note"
+    class="card mb-4"
+    
+    />
+    
     <div v-for="note in notes" :key="note.id" class="card mb-4">
       <div class="card-content">
         <div class="content">
@@ -37,6 +44,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import Note from '@/components/Notes/Note.vue'
 
 const newNote = ref('')
 const newNoteRef = ref(null)
