@@ -4,9 +4,10 @@
       <div class="field">
         <div class="control">
           <textarea
+            v-model="newNote"
             class="textarea"
             placeholder="Add a new note"
-            v-model="newNoteContent"
+          
           ></textarea>
         </div>
       </div>
@@ -41,6 +42,9 @@
 
 <script setup>
     import { ref } from 'vue'
+
+    const newNote = ref('default')
+
     const notes = ref([
     {
         id:'id1',
@@ -51,6 +55,8 @@
         content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem ipsa commodi sint ut ullam culpa nulla molestiae sunt quia qui maxime, enim quasi officiis aperiam fugit, corrupti omnis, eaque animi.'
     }]
 )
+
+
 
 
     </script>
