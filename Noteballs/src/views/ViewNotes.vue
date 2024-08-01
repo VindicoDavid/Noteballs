@@ -3,7 +3,7 @@
     <div class="card has-background-link-dark p-4 mb-5">
       <div class="field">
         <div class="control">
-          <textarea v-model="newNote" class="textarea" placeholder="Add a new note"></textarea>
+          <textarea v-model="newNote" class="textarea" placeholder="Add a new note" ref="newNoteRef"></textarea>
         </div>
       </div>
 
@@ -38,7 +38,8 @@
 <script setup>
 import { ref } from 'vue'
 
-const newNote = ref('default')
+const newNote = ref('')
+const newNoteRef = ref(null)
 
 const notes = ref([
   {
@@ -57,7 +58,9 @@ const addNote = () => {
     id,
     content: newNote.value
   }
-  notes.value.push(note)
+  notes.value.unshift(note)
+  newNote.value = ''
+  newNoteRef.value.focus()
 
 }
 
