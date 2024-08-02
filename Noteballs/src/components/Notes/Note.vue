@@ -12,12 +12,15 @@
 
     <footer class="card-footer">
       <a href="#" class="card-footer-item" @click.prevent="editNote">Edit</a>
-      <a href="#" class="card-footer-item" @click.prevent="handleDeleteClicked">Delete</a>
+      <a href="#" class="card-footer-item" @click.prevent="storeNotes.deleteNote(props.note.id)">Delete</a>
     </footer>
   </div>
   </template>
   <script setup>
     import { ref, computed } from 'vue'
+    import {useStoreNotes} from '@/stores/storeNotes.js'
+
+    const storeNotes = useStoreNotes()
 
     const characterLength = computed(() => {
         let length = props.note.content.length

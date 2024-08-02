@@ -27,7 +27,9 @@ export const useStoreNotes = defineStore('storeNotes', {
       }
       this.notes.unshift(note)
     },
-    
+    deleteNote(idToDelete){
+      this.notes = this.notes.filter(note => note.id !== idToDelete)
+    }
    
   }
   
