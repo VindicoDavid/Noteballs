@@ -1,6 +1,6 @@
 <template>
   <div class="notes mx-5 mt-5 mb-5">
-    <AddEditNote>
+    <AddEditNote v-model="newNote">
       <template #buttons>
         <button 
         class="button is-link has-background-link" 
