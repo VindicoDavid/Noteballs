@@ -1,5 +1,18 @@
 <template>
   <div class="notes mx-5 mt-5 mb-5">
+    <AddEditNote>
+      <template #buttons>
+        <button 
+        class="button is-link has-background-link" 
+        @click="addNote"
+        :disabled="!newNote"
+        >
+          Add New Note
+        </button>
+      </template>
+
+    </AddEditNote>
+<!--     
     <div class="card has-background-link-dark p-4 mb-5">
       <div class="field">
         <div class="control">
@@ -18,14 +31,12 @@
           </button>
         </div>
       </div>
-    </div>
+    </div> -->
     <Note
     v-for="note in storeNotes.notes"
     :key="note.id"
     :note="note"
     class="card mb-4"
-   
-    
     />
     
   </div>
@@ -34,6 +45,7 @@
 <script setup>
 import { ref } from 'vue'
 import Note from '@/components/Notes/Note.vue'
+import AddEditNote from '@/components/Notes/AddEditNote.vue'
 import {useStoreNotes} from '@/stores/storeNotes.js'
 
 const storeNotes = useStoreNotes()
