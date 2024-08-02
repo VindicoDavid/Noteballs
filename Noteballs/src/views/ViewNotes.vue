@@ -43,7 +43,7 @@ const newNoteRef = ref(null)
 
 
 const addNote = () => {
-  storeNotes.addNote()
+  storeNotes.addNote(newNote.value)
 
   newNote.value = ''
   newNoteRef.value.focus()
