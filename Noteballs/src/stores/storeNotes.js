@@ -15,5 +15,13 @@ export const useStoreNotes = defineStore('storeNotes', {
             }]
           
     }
+  },
+  actions:{
+    
+     addNote (note){
+      console.log('addNote', note)
+    }
+   
   }
+  
 })
