@@ -1,5 +1,21 @@
 <template>
   <div class="notes mx-5 mt-5 mb-5">
+    <AddEditNote v-model="newNote" 
+    ref="addEditNoteRef"
+    placeholder="Add a new note..."
+    >
+      <template #buttons>
+        <button 
+        class="button is-link has-background-link" 
+        @click="addNote"
+        :disabled="!newNote"
+        >
+          Add New Note
+        </button>
+      </template>
+
+    </AddEditNote>
+<!--     
     <div class="card has-background-link-dark p-4 mb-5">
       <div class="field">
         <div class="control">
@@ -18,14 +34,12 @@
           </button>
         </div>
       </div>
-    </div>
+    </div> -->
     <Note
-    v-for="note in notes"
+    v-for="note in storeNotes.notes"
     :key="note.id"
     :note="note"
     class="card mb-4"
-    @deleteClicked="handleDeleteClicked"
-    
     />
     
   </div>
@@ -34,47 +48,33 @@
 <script setup>
 import { ref } from 'vue'
 import Note from '@/components/Notes/Note.vue'
+import AddEditNote from '@/components/Notes/AddEditNote.vue'
+import {useStoreNotes} from '@/stores/storeNotes.js'
+
+const storeNotes = useStoreNotes()
 
 const newNote = ref('')
-const newNoteRef = ref(null)
+const addEditNoteRef = ref(null)
 
-const notes = ref([
-  {
-    id: 'id1',
-    content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem ipsa commodi sint ut ullam culpa nulla molestiae sunt quia qui maxime, enim quasi officiis aperiam fugit, corrupti omnis, eaque animi.'
-  },
-  {
-    id: 'id2',
-    content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem ipsa commodi sint ut ullam culpa nulla molestiae sunt quia qui maxime, enim quasi officiis aperiam fugit, corrupti omnis, eaque animi.'
-  }]
-)
+
 const addNote = () => {
-  let currentDate = new Date().getTime()
-  let id = currentDate.toString()
-  let note = {
-    id,
-    content: newNote.value
-  }
-  notes.value.unshift(note)
+  storeNotes.addNote(newNote.value)
+
   newNote.value = ''
-  newNoteRef.value.focus()
+  addEditNoteRef.value.focusTextarea()
+  // newNoteRef.value.focus()
 
 }
 
-const handleDeleteClicked = (id) => {
-  deleteNote(id)
-}
+// const handleDeleteClicked = (id) => {
+//   deleteNote(id)
+// }
 const handleEditClicked = (id) => {
   // Handle the edit logic here
   console.log('edit note', id)
 }
 
-// delete note
-const deleteNote = (id) => {
-  console.log('delete note', id)
-  notes.value = notes.value.filter(note => note.id !== id)
-  
-}
+
 
 
 

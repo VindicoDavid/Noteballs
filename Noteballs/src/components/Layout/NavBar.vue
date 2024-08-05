@@ -7,7 +7,7 @@
           </div>
   
           <a
-            @click.prevent="showMobileNav = !showMobileNav"
+            
             class="navbar-burger"
             :class="{ 'is-active' : showMobileNav }"
             aria-expanded="false"
@@ -28,6 +28,7 @@
         >
           <div class="navbar-end">
             <RouterLink
+            @click="showMobileNav = false"
               to="/"
               class="navbar-item"
               active-class="is-active"
@@ -35,6 +36,7 @@
               Notes
             </RouterLink>
             <RouterLink
+                @click="showMobileNav = false"
               to="/stats"
               class="navbar-item"
               active-class="is-active"
