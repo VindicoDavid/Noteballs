@@ -1,5 +1,6 @@
 <template>
        <input
+            v-model="loveNoteballs"
             type="text"
             placeholder="stats search"
             v-autofocus
@@ -37,9 +38,14 @@
     </div>
 </template>
 <script setup>
-
+import {ref} from 'vue'
 import { useStoreNotes} from '@/stores/storeNotes'
 const storeNotes = useStoreNotes()
 import {vAutofocus} from '@/directives/vAutofocus'
+import {useWatchCharacters} from '@/use/useWatchCharacters'
+const loveNoteballs = ref('')
+useWatchCharacters(loveNoteballs)
+
+
 
 </script>
