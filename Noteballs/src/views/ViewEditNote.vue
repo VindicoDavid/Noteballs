@@ -21,7 +21,7 @@
             </template>
 
         </AddEditNote>
-        <pre>{{ $route.params.id }}</pre>
+      
         
     </div>
 </template>
