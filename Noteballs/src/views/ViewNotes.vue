@@ -15,26 +15,7 @@
       </template>
 
     </AddEditNote>
-<!--     
-    <div class="card has-background-link-dark p-4 mb-5">
-      <div class="field">
-        <div class="control">
-          <textarea v-model="newNote" class="textarea" placeholder="Add a new note" ref="newNoteRef"></textarea>
-        </div>
-      </div>
 
-      <div class="field is-grouped is-grouped-right">
-        <div class="control">
-          <button 
-          class="button is-link has-background-link" 
-          @click="addNote"
-          :disabled="!newNote"
-          >
-            Add New Note
-          </button>
-        </div>
-      </div>
-    </div> -->
     <Note
     v-for="note in storeNotes.notes"
     :key="note.id"
@@ -46,10 +27,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch} from 'vue'
 import Note from '@/components/Notes/Note.vue'
 import AddEditNote from '@/components/Notes/AddEditNote.vue'
 import {useStoreNotes} from '@/stores/storeNotes.js'
+import {useWatchCharacters} from '@/use/useWatchCharacters.js'
 
 const storeNotes = useStoreNotes()
 
@@ -73,6 +55,9 @@ const handleEditClicked = (id) => {
   // Handle the edit logic here
   console.log('edit note', id)
 }
+
+useWatchCharacters(newNote)
+
 
 
 
