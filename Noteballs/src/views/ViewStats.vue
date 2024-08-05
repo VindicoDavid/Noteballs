@@ -1,13 +1,24 @@
 <template>
+       <input
+            type="text"
+            placeholder="stats search"
+            v-autofocus
+            />
+
+
     <div class="stats">
         <table class="table">
+           
+
             <thead>
                 <tr>
                     <th>Stat</th>
                     <th>Value</th>
                 </tr>
     </thead>
+
     <tbody>
+       
         <tr>
             <td>Number of Notes</td>
             <td>{{ storeNotes.totalNoteCount }}</td>
@@ -18,7 +29,9 @@
         </tr>
         
     </tbody>
+    
     </table>
+ 
 
         
     </div>
@@ -27,5 +40,6 @@
 
 import { useStoreNotes} from '@/stores/storeNotes'
 const storeNotes = useStoreNotes()
+import {vAutofocus} from '@/directives/vAutofocus'
 
 </script>
