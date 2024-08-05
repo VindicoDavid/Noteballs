@@ -1,2 +1,2 @@
 # Noteballs
-Vue 3 and pinia with firrebased and Vite course project 
+Noteballs, notetaking and stats app built in Vue 3 and pinia with firrebase and Vite course project 
