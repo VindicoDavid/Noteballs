@@ -4,8 +4,9 @@
         <AddEditNote v-model="noteContent" bgColor="success-dark" placeholder="Edit Note..." label="Edit Note" ref="AddEditNoteRef">
             <template #buttons>
                 <button
-                class="button is-link has-background-success"
+                class="button is-link has-background-success mr-2"
                 :disabled="!noteContent"
+                @click="handleSaveClicked"
              
                 >
                     Save Note
@@ -40,6 +41,14 @@ const AddEditNoteRef = ref(null)
 noteContent.value = storeNotes.getNoteContent
 
 const route = useRoute()
-console.log(route.params.id)
+// console.log(route.params.id)
+
+const handleSaveClicked = () => {
+    // storeNotes.updateNoteContent(noteContent.value)
+    // $router.back()
+    console.log('Save Clicked')
+
+    storeNotes.updateNote(route.params.id, noteContent.value)
+}
 
 </script>
