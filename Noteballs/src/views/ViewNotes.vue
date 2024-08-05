@@ -15,26 +15,7 @@
       </template>
 
     </AddEditNote>
-<!--     
-    <div class="card has-background-link-dark p-4 mb-5">
-      <div class="field">
-        <div class="control">
-          <textarea v-model="newNote" class="textarea" placeholder="Add a new note" ref="newNoteRef"></textarea>
-        </div>
-      </div>
 
-      <div class="field is-grouped is-grouped-right">
-        <div class="control">
-          <button 
-          class="button is-link has-background-link" 
-          @click="addNote"
-          :disabled="!newNote"
-          >
-            Add New Note
-          </button>
-        </div>
-      </div>
-    </div> -->
     <Note
     v-for="note in storeNotes.notes"
     :key="note.id"
@@ -46,7 +27,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch} from 'vue'
 import Note from '@/components/Notes/Note.vue'
 import AddEditNote from '@/components/Notes/AddEditNote.vue'
 import {useStoreNotes} from '@/stores/storeNotes.js'
@@ -74,6 +55,11 @@ const handleEditClicked = (id) => {
   console.log('edit note', id)
 }
 
+watch( newNote, (newValue, oldValue) => {
+ if(newValue.length === 100){
+    alert('You have reached the maximum limit of 100 characters')
+ }
+})
 
 
 
