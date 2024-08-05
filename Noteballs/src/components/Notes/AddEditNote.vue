@@ -2,7 +2,7 @@
   <div class="card p-4 mb-5"
   :class="'has-background-' + bgColor"
   >
-  <label v-if="label" class="label has-text-white">{{ label }}</label>
+  <label v-if="label" class="label has-text-white">{{  }}</label>
     <div class="field">
       <div class="control">
         <textarea 
