@@ -2,7 +2,7 @@
        <input
             v-model="loveNoteballs"
             type="text"
-            placeholder="stats search"
+            placeholder="Stats search"
             v-autofocus
             />
 
